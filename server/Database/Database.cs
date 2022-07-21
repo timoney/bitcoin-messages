@@ -5,7 +5,7 @@ using server.Models;
 
 public class Database {
   
-  static string connectionString = "Data Source=../MyDatabase.sqlite;Version=3;";
+  static string connectionString = "Data Source=../../MyDatabase.sqlite;Version=3;";
 
   public List<BlockchainMessage> select() {
     SQLiteConnection conn = new SQLiteConnection(connectionString);

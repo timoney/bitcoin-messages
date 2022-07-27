@@ -5,15 +5,11 @@ using Newtonsoft.Json;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment()) {
-  app.UseSwagger();
-  app.UseSwaggerUI();
-}
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+var url = $"http://0.0.0.0:{port}";
+var target = Environment.GetEnvironmentVariable("TARGET") ?? "World";
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
@@ -24,7 +20,7 @@ app.MapGet("/latest", () => {
   //List<BlockchainMessage> messages = database.select();
   //var result = JsonConvert.SerializeObject(messages);
   //return result;
-  return "sup";
+  return $"sup {target}";
 }).WithName("GetLatest");
 
-app.Run();
+app.Run(url);

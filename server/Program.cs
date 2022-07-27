@@ -15,12 +15,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-app.MapGet("/latest", () => {
-  //Database database = new Database();
-  //List<BlockchainMessage> messages = database.select();
-  //var result = JsonConvert.SerializeObject(messages);
-  //return result;
-  return $"sup {target} and Bridget!";
+app.MapGet("/latest", async () => {
+  List<BlockchainMessage> blockchainMessages = await DatabaseUtils.selectMostRecentTenMessages();
+  return JsonConvert.SerializeObject(blockchainMessages);
 }).WithName("GetLatest");
 
 app.Run(url);

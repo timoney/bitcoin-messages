@@ -20,7 +20,7 @@ app.MapGet("/latest", () => {
   //List<BlockchainMessage> messages = database.select();
   //var result = JsonConvert.SerializeObject(messages);
   //return result;
-  return $"sup {target}";
+  return $"sup {target} and Bridget!";
 }).WithName("GetLatest");
 
 app.Run(url);

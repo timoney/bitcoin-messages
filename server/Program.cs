@@ -17,7 +17,7 @@ app.MapControllers();
 
 app.MapGet("/latest", async () => {
   List<BlockchainMessage> blockchainMessages = await DatabaseUtils.selectMostRecentTenMessages();
-  return JsonConvert.SerializeObject(blockchainMessages);
+  return JsonConvert.SerializeObject(blockchainMessages, Formatting.Indented);
 }).WithName("GetLatest");
 
 app.Run(url);

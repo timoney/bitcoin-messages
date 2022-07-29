@@ -62,7 +62,7 @@ public static class DatabaseUtils {
       connectionString.MinimumPoolSize = 0;
       connectionString.ConnectionTimeout = 5;
       connectionString.ConnectionLifeTime = 1800;
-      Console.WriteLine($"connectionString: {connectionString.ConnectionString}");
+      //Console.WriteLine($"connectionString: {connectionString.ConnectionString}");
       return connectionString.ConnectionString;
   }
 

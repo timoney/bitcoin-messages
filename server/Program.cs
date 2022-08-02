@@ -11,11 +11,11 @@ var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 var url = $"http://0.0.0.0:{port}";
 var target = Environment.GetEnvironmentVariable("TARGET") ?? "World";
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-app.UseDefaultFiles();
-app.UseStaticFiles();
 
 app.MapGet("/latest", async () => {
   List<BlockchainMessage> blockchainMessages = await DatabaseUtils.selectMostRecentTenMessages();

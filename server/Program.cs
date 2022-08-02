@@ -14,6 +14,8 @@ var target = Environment.GetEnvironmentVariable("TARGET") ?? "World";
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.MapGet("/latest", async () => {
   List<BlockchainMessage> blockchainMessages = await DatabaseUtils.selectMostRecentTenMessages();
